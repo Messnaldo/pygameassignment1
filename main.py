@@ -362,6 +362,7 @@ class GameMain:
             text_rect = t_restart.get_rect(center=(WIDTH / 2, 70))
             self.screen.blit(t_restart, text_rect)
 
+
         self.DisplayScore()
 
         t_mode = self.small_font.render(f"{self.ai_mode.capitalize()} AI Mode", False, (255, 255, 255))
@@ -370,7 +371,9 @@ class GameMain:
 
         self.player1.render()
         self.player2.render()
-        self.ball.render()
+        # self.ball.render()
+        if self.game_state != 'start':
+            self.ball.render()
 
     def DisplayScore(self):
         self.t_p1_score = self.score_font.render(str(self.player1_score), False, (255, 255, 255))
