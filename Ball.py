@@ -5,7 +5,10 @@ class Ball:
     def __init__(self, screen, x, y, width, height):
         self.screen=screen
 
-        self.rect = pygame.Rect(x, y, width, height)
+        # self.rect = pygame.Rect(x, y, width, height)
+        self.image = pygame.image.load('bell.png')  # โหลดรูปภาพ bell.png
+        self.image = pygame.transform.scale(self.image, (width, height))  # ปรับขนาดรูปภาพให้เท่ากับลูกบอล
+        self.rect = self.image.get_rect(topleft=(x, y))
 
         self.dx=random.choice([-300, 300])
         self.dy=random.randint(-150, 150)
@@ -31,5 +34,7 @@ class Ball:
         self.rect.x += self.dx*dt
         self.rect.y += self.dy*dt
 
+    # def render(self):
+    #     pygame.draw.rect(self.screen, (255, 255, 255), self.rect)
     def render(self):
-        pygame.draw.rect(self.screen, (255, 255, 255), self.rect)
+        self.screen.blit(self.image, self.rect)
