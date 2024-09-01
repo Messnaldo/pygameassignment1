@@ -6,8 +6,8 @@ class Ball:
         self.screen=screen
 
         # self.rect = pygame.Rect(x, y, width, height)
-        self.image = pygame.image.load('bell.png')  # โหลดรูปภาพ bell.png
-        self.image = pygame.transform.scale(self.image, (width, height))  # ปรับขนาดรูปภาพให้เท่ากับลูกบอล
+        self.image = pygame.image.load('bell.png')  
+        self.image = pygame.transform.scale(self.image, (width, height))  
         self.rect = self.image.get_rect(topleft=(x, y))
 
         self.dx=random.choice([-300, 300])

@@ -11,8 +11,8 @@ class GameMain:
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         self.music_channel = pygame.mixer.Channel(0)
-        self.sound_channel = pygame.mixer.Channel(1)  # ช่องเสียงสำหรับเอฟเฟกต์ทั่วไป
-        self.skill_channel = pygame.mixer.Channel(2)  # ช่องเสียงเฉพาะสำหรับสกิล
+        self.sound_channel = pygame.mixer.Channel(1)  
+        self.skill_channel = pygame.mixer.Channel(2)  
         self.music_channel.set_volume(0.5)
 
         self.sounds_list = {
@@ -61,7 +61,7 @@ class GameMain:
         self.original_ball_dx = 0
         self.original_ball_dy = 0
 
-        # Initializing paddles in the center
+
         self.player1 = Paddle(self.screen,
                               30,
                               HEIGHT / 2 - self.default_paddle_height / 2,
@@ -189,6 +189,11 @@ class GameMain:
                 if self.hit_counter % 5 == 0:
                     self.ball.dx *= 1.2
                     self.ball.dy *= 1.2
+                print("hit_counter = %d",self.hit_counter)
+                print("self.ball.dx = %f",self.ball.dx)
+                print("self.ball.dy = %f",self.ball.dy)
+
+
 
             if self.ball.Collides(self.player1):
                 self.ball.dx = -self.ball.dx * 1.03
@@ -416,7 +421,7 @@ if __name__ == '__main__':
     while True:
         pygame.display.set_caption("Pong game running with {:d} FPS".format(int(clock.get_fps())))
 
-        # elapsed time from the last call
+        
         dt = clock.tick(MAX_FRAME_RATE)/1000.0
 
         events = pygame.event.get()
